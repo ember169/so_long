@@ -1,14 +1,18 @@
 ## Mlx related
-Makefile.gen
-/test/mlx-test
+libs/minilibx-linux/Makefile.gen
+libs/minilibx-linux/test/mlx-test
 
 ## Editor
+.vscode
 .vscode/*
 *~
 \#*\#
 
 ## Other
 .DS_STORE
+
+## Compiled binary
+so_long
 
 # Prerequisites
 *.d
