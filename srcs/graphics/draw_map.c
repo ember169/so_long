@@ -1,33 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_handler.c                                    :+:      :+:    :+:   */
+/*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/01 11:17:03 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/02 16:57:46 by lgervet          ###   ########.fr       */
+/*   Created: 2026/02/04 15:33:00 by lgervet           #+#    #+#             */
+/*   Updated: 2026/02/04 17:03:00 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-static void	print_error(char *msg)
+int	create_trgb(int t, int r, int g, int b)
 {
-	if (!msg)
-		msg = "[!] Error\n";
-	write(2, &msg, ft_strlen(msg));
-	return ;
+	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-void	error_exit(t_wdata *window, char *errmsg)
+void	draw_wall(int i)
 {
-	print_error(errmsg);
-	if (window->w_ptr)
+	
+}
+
+
+void	render_map(t_wdata *window, char **map, t_mdata *map_data)
+{
+	int	i;
+	i = 0;
+	while (map[i])
 	{
-		mlx_clear_window(window->mlx_ptr, window->w_ptr);
-		mlx_destroy_window(window->mlx_ptr, window->w_ptr);
+		if (map[i] == '1')
+			draw_wall(i);
+		else if (map[i] == '0')
+			continue ;
+		else if (map[i] == 'C')
+			draw_collectible(i);
+		else if (map[i] == 'E')
+			draw_exit(i);
+		else if (map[i] == 'P')
+			draw_player(i);
+		i++ ;
 	}
-	free(window);
-	exit(1);
 }

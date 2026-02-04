@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                          :::      ::::::::   #
-#   Makefile                                             :+:      :+:    :+:   #
-#                                                      +:+ +:+         +:+     #
-#   By: lgervet <42@leogervet.com>                   +#+  +:+       +#+        #
-#                                                  +#+#+#+#+#+   +#+           #
-#   Created: 2026/02/01 11:08:40 by lgervet             #+#    #+#             #
-#   Updated: 2026/02/01 12:44:30 by lgervet            ###   ########.fr       #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: lgervet <42@leogervet.com>                 +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 0026/02/01 11:08:40 by gervet            #+#    #+#              #
+#    Updated: 2026/02/04 17:00:04 by lgervet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,9 @@ LDFLAGS	:= -L $(MLXPATH) -lmlx -L $(LIBPATH) -lft -lXext -lX11 -lm -lz
 
 SRCS	:= \
 		srcs/so_long.c \
-		srcs/utils/error_handler.c
+		srcs/utils/error_handler.c \
+		srcs/graphics/window.c \
+		srcs/graphics/draw_map.c
 OBJS	:= $(SRCS:.c=.o)
 
 
