@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 14:36:39 by lgervet           #+#    #+#             */
-/*   Updated: 2026/01/25 15:28:40 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/05 12:59:27 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,11 +98,7 @@ typedef struct s_stash
 }	t_stash;
 
 char	*get_next_line(int fd);
-size_t	ft_strlen(const char *str);
-void	*ft_memcpy(void *dst, const void *src, size_t n);
-void	*ft_memmove(void *dst, const void *src, size_t len);
 void	*ft_realloc(void *ptr, size_t old_size, size_t new_size);
-char	*ft_strchr(const char *s, int c);
 
 // PRINTF
 int		ft_printf(const char *str, ...);

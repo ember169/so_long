@@ -1,26 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 19:13:35 by lgervet           #+#    #+#             */
-/*   Updated: 2025/12/23 14:21:53 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/05 12:59:28 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
-
-size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
 
 /*
 ** ft_realloc:
@@ -58,55 +48,4 @@ void	*ft_realloc(void *ptr, size_t old_size, size_t new_size)
 	}
 	free(ptr);
 	return (new);
-}
-
-void	*ft_memcpy(void *dst, const void *src, size_t n)
-{
-	unsigned char		*d;
-	const unsigned char	*s;
-
-	if (!dst && !src)
-		return (NULL);
-	d = (unsigned char *) dst;
-	s = (const unsigned char *) src;
-	while (n--)
-		*d++ = *s++;
-	return (dst);
-}
-
-char	*ft_strchr(const char *s, int c)
-{
-	while (*s)
-	{
-		if (*s == (char)c)
-			return ((char *)s);
-		s++;
-	}
-	if ((char)c == '\0')
-		return ((char *)s);
-	return (NULL);
-}
-
-void	*ft_memmove(void *dst, const void *src, size_t len)
-{
-	unsigned char		*d;
-	const unsigned char	*s;
-
-	if (!src && !dst)
-		return (NULL);
-	d = (unsigned char *) dst;
-	s = (const unsigned char *) src;
-	if (s > d)
-	{
-		while (len--)
-			*d++ = *s++;
-	}
-	else if (d > s)
-	{
-		d += len;
-		s += len;
-		while (len--)
-			*--d = *--s;
-	}
-	return (dst);
 }

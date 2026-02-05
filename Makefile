@@ -6,7 +6,7 @@
 #    By: lgervet <42@leogervet.com>                 +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 0026/02/01 11:08:40 by gervet            #+#    #+#              #
-#    Updated: 2026/02/04 17:00:04 by lgervet          ###   ########.fr        #
+#    Updated: 2026/02/05 13:02:24 by lgervet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,10 @@ LDFLAGS	:= -L $(MLXPATH) -lmlx -L $(LIBPATH) -lft -lXext -lX11 -lm -lz
 
 SRCS	:= \
 		srcs/so_long.c \
-		srcs/utils/error_handler.c \
-		srcs/graphics/window.c \
+		srcs/utils/exit_handler.c \
+		srcs/utils/graphics.c \
+		srcs/parsing/file_parser.c \
+		srcs/graphics/window_manager.c \
 		srcs/graphics/draw_map.c
 OBJS	:= $(SRCS:.c=.o)
 
@@ -58,7 +60,7 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
-	$(MAKE) -C $(LIBFT_PATH) clean
+	$(MAKE) -C $(LIBPATH) clean
 
 re: fclean all
 

@@ -6,7 +6,7 @@
 #    By: lgervet <42@leogervet.com>                 +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/07 14:34:30 by lgervet           #+#    #+#              #
-#    Updated: 2026/01/25 15:30:19 by lgervet          ###   ########.fr        #
+#    Updated: 2026/02/05 12:59:23 by lgervet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ SRCS 		:= \
 	srcs/libc/ft_substr.c \
 	srcs/libc/ft_tolower.c \
 	srcs/getnextline/get_next_line.c \
-	srcs/getnextline/get_next_line_utils.c \
+	srcs/getnextline/ft_realloc.c \
 	srcs/libc/ft_toupper.c \
 	srcs/printf/dispatch.c \
 	srcs/printf/ft_printf.c \
