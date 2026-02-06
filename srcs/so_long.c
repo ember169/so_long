@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 10:56:54 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/05 13:14:28 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/06 10:49:44 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int	main(int ac, char **av)
 	ft_printf("[ ] Parsing file\n");
 	map_data = parse_file(av[1]);
 	ft_printf("[x] File parsed\n");
-	// if (!valid_map(map_data))
-	// 	error_exit(NULL, map_data, "[!] Invalid map\n");
+	if (!valid_map(map_data))
+		error_exit(NULL, map_data, "[!] Invalid map\n");
 	ft_printf("[ ] Initializing MLX\n");
 	mlx_ptr = mlx_init();
 	if (!mlx_ptr)

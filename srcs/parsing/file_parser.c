@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 16:09:12 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/05 14:29:14 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/06 10:37:58 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,27 +24,27 @@ static void	_initialize_mdata(t_mdata *map_data)
 
 static int	_count_columns(t_mdata *map_data)
 {
-	int	row_nb;
-	int	col_nb;
+	int	y;
+	int	x;
 	int	tmp;
 
 	tmp = 0;
-	row_nb = 0;
-	col_nb = 0;
-	while (map_data->map[row_nb])
+	y = 0;
+	x = 0;
+	while (map_data->map[y])
 	{
-		col_nb = 0;
-		while (map_data->map[row_nb][col_nb])
-			col_nb++;
-		if (map_data->map[row_nb][col_nb - 1] == '\n')
+		x = 0;
+		while (map_data->map[y][x])
+			x++;
+		if (map_data->map[y][x - 1] == '\n')
 		{
-			map_data->map[row_nb][col_nb - 1] = '\0';
-			col_nb--;
+			map_data->map[y][x - 1] = '\0';
+			x--;
 		}
-		if (tmp != 0 && col_nb != tmp)
+		if (tmp != 0 && x != tmp)
 			error_exit(NULL, map_data, "[!] Uneven columns number\n");
-		tmp = col_nb;
-		row_nb++;
+		tmp = x;
+		y++;
 	}
 	return (tmp);
 }
