@@ -29,8 +29,13 @@ __Building ...__
 # Ressources
 
 ## Documentation
-__Building ...__
+- [Stacks vs. Queues: The Dynamic Duo Behind BFS, DFS, and Flood Fill, Medium, 2025](https://mkyush.medium.com/stacks-vs-f00c85620ea5)
+- [Flood fill, Wikipedia](https://en.wikipedia.org/wiki/Flood_fill)
+- [Depth-first search, Wikipedia](https://en.wikipedia.org/wiki/Depth-first_search)
+- [Basic Graph Theory (BFS, DFS, and Floodfill), Albert GURAL, 2011](https://activities.tjhsst.edu/sct/lectures/1112/bfsdfs100711.pdf)
+- [Backtracking, Wikipedia](https://en.wikipedia.org/wiki/Backtracking)
 
 ## AI Usage
 I used AI (Gemini 3) as a technical consultant and debugging partner throughout this project. The collaboration focused on architectural decisions, logic verification, and optimizing the sorting strategy.
+
 __Building ...__

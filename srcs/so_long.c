@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 10:56:54 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/06 10:49:44 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/06 14:08:00 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,7 @@ int	main(int ac, char **av)
 	ft_printf("[ ] Initializing MLX\n");
 	mlx_ptr = mlx_init();
 	if (!mlx_ptr)
-	{
-		write(2, "[!] Couldn't initialize library", 32);
-		return (0);
-	}
+		error_exit(NULL, map_data, "[!] Couldn't initialize library\n");
 	ft_printf("[x] MLX initialized\n");
 	ft_printf("[ ] Spawning window\n");
 	window_data = window_init(map_data, mlx_ptr, "Test #1");

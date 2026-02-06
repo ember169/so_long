@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 11:17:03 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/05 13:17:57 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/06 13:35:52 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,15 @@ static void	_free_map(t_mdata *mdata)
 		i = 0;
 		while (mdata->map[i])
 			free(mdata->map[i++]);
+		free(mdata->map);
 	}
-	free(mdata->map);
+	if (mdata->d_map)
+	{
+		i = 0;
+		while (mdata->d_map[i])
+			free(mdata->d_map[i++]);
+		free(mdata->d_map);
+	}
 	free(mdata);
 }
 

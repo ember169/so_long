@@ -6,7 +6,7 @@
 #    By: lgervet <42@leogervet.com>                 +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 0026/02/01 11:08:40 by gervet            #+#    #+#              #
-#    Updated: 2026/02/06 11:43:41 by lgervet          ###   ########.fr        #
+#    Updated: 2026/02/06 14:35:41 by lgervet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCS	:= \
 		srcs/utils/graphics.c \
 		srcs/parsing/file_parser.c \
 		srcs/parsing/file_validator.c \
+		srcs/parsing/path_finder.c \
 		srcs/graphics/window_manager.c \
 		srcs/graphics/draw_map.c
 OBJS	:= $(SRCS:.c=.o)

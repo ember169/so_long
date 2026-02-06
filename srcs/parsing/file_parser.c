@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 16:09:12 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/06 10:37:58 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/06 13:32:44 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ static void	_initialize_mdata(t_mdata *map_data)
 	map_data->map = malloc(1025);
 	if (!map_data->map)
 		error_exit(NULL, map_data, "[!] Error initalizing map_data->map\n");
+	map_data->d_map = malloc(1025);
+	if (!map_data->map)
+		error_exit(NULL, map_data, "[!] Error initalizing map_data->d_map\n");
 	return ;
 }
 
