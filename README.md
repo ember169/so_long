@@ -16,7 +16,7 @@ The player must collect all items on the map and reach the exit in the shortest 
 - **Library:** Developed using MiniLibX (simple graphics library for X Window System).
 - **Memory Management:** Zero memory leaks allowed (checked with valgrind).
 - **Error Handling:** The program must parse .ber map files and handle invalid configurations (missing exit/player/collectible, non-rectangular maps, or unreachable goals) by displaying a clean Error message.
-- **Algorithm:** Includes a pathfinding check to ensure the map is actually playable before launching.
+- **Algorithm:** Includes a pathfinding check (iterative flood fill) to ensure the map is actually playable before launching.
 
 ## Instructions
 
@@ -36,6 +36,16 @@ __Building ...__
 - [Backtracking, Wikipedia](https://en.wikipedia.org/wiki/Backtracking)
 
 ## AI Usage
-I used AI (Gemini 3) as a technical consultant and debugging partner throughout this project. The collaboration focused on architectural decisions, logic verification, and optimizing the sorting strategy.
+I used AI (Gemini 3 Flash) as a low-level technical advisor and logic validator. The collaboration focused on resolving build system conflicts, debugging pointer-level issues in the graphics engine, hardening and debugging a path-validation algorithm.
 
-__Building ...__
+### Build System & Toolchain Debugging
+- **Linker error resolution:** Assisted in diagnosing and fixing "multiple definition" errors in the Libft archive by identifying stale object files.
+- **Makefile optimization:** Helped refine the build rules, specifically fixing path variable typos (e.g., `LIB_PATH` vs `LIBPATH`) that caused recursive compilation failures.
+
+### Graphics Engine Logic (MiniLibX)
+- **Coordinate mapping:** Identified a critical inversion between X (columns) and Y (rows) coordinates during the translation from the 2D map array to the pixel-based window display.
+- **Rendering optimization:** Diagnosed a logic error where the rendering loop was drawing diagonal lines instead of filled tiles during testing phase with `mlx_pixel_put`.
+
+### Map Validation & Algorithmic Logic
+- **Iterative flood fill logic:** presented the core logic of the pathfinding algorithm to verify the reachability of all collectibles ('C') and the exit ('E').
+- **Logic hardening:** Identified and corrected a major security flaw in the pathfinder that would have incorrectly validated maps with an unreachable exit.
