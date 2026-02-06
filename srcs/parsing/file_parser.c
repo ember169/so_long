@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 16:09:12 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/06 13:32:44 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/06 18:51:10 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,6 @@ static void	_parse_data(t_mdata *map_data, int fd)
 	}
 	map_data->row_nb = i;
 	map_data->col_nb = _count_columns(map_data);
-	if (map_data->row_nb == map_data->col_nb)
-		error_exit(NULL, map_data, "[!] Map is square instead of rectangular\n");
 }
 
 t_mdata	*parse_file(char *arg)

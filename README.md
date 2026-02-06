@@ -47,5 +47,6 @@ I used AI (Gemini 3 Flash) as a low-level technical advisor and logic validator.
 - **Rendering optimization:** Diagnosed a logic error where the rendering loop was drawing diagonal lines instead of filled tiles during testing phase with `mlx_pixel_put`.
 
 ### Map Validation & Algorithmic Logic
+- **Geometry Logic Correction:** Identified a logic error regarding map shape constraints; clarified that "rectangular" requirements include square maps, leading to the removal of an incorrect `row_nb == col_nb` restriction.
 - **Iterative flood fill logic:** presented the core logic of the pathfinding algorithm to verify the reachability of all collectibles ('C') and the exit ('E').
 - **Logic hardening:** Identified and corrected a major security flaw in the pathfinder that would have incorrectly validated maps with an unreachable exit.
