@@ -34,6 +34,7 @@ __Building ...__
 - [Depth-first search, Wikipedia](https://en.wikipedia.org/wiki/Depth-first_search)
 - [Basic Graph Theory (BFS, DFS, and Floodfill), Albert GURAL, 2011](https://activities.tjhsst.edu/sct/lectures/1112/bfsdfs100711.pdf)
 - [Backtracking, Wikipedia](https://en.wikipedia.org/wiki/Backtracking)
+- [MLX events, 42 Docs](https://harm-smits.github.io/42docs/libs/minilibx/events.html)
 
 ## AI Usage (Gemini 3 Flash)
 Technical advisor for build system debugging, memory optimization, and algorithmic hardening.
@@ -49,6 +50,10 @@ Technical advisor for build system debugging, memory optimization, and algorithm
 - **Pathfinding:** Hardened flood-fill logic to prevent false positives on unreachable exits/collectibles.
 - **Memory:** Refactored assets from heap-allocated pointers to stack-allocated structures.
 - **Layering:** Solved XPM transparency issues via a background-first (floor-under-all) rendering pass.
+
+### Data Architecture
+- **Structural Encapsulation:** Implemented a top-level `t_game` container to unify window, map, and asset structures. This simplifies event handling by allowing a single reference pointer to be passed through MiniLibX hooks.
+- **Pointer Type Correction:** Refactored MLX resource pointers from `int *` to `void *` to ensure alignment with library specifications and prevent undefined behavior.
 
 ## Game assets
 All game assets credit goes to [Robert (0x72)](https://0x72.itch.io/16x16-dungeon-tileset).

@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 10:56:54 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/10 12:05:39 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/10 21:04:06 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,25 @@
 
 int	main(int ac, char **av)
 {
-	int			*mlx_ptr;
-	t_wdata		*window_data;
-	t_mdata		*map_data;
-	t_assets	*assets;
+	void		*mlx_ptr;
+	t_game		game;
 
 	if (ac != 2)
 		return (0);
-	map_data = parse_file(av[1]);
-	ft_printf("[x] File parsed\n");
-	if (!valid_map(map_data))
-		error_exit(NULL, map_data, NULL, "[!] Invalid map\n");
+	ft_bzero(&game, sizeof(t_game));
+	game.m = parse_file(av[1]);
+	if (!game.m || !valid_map(game.m))
+		error_exit(NULL, game.m, NULL, "[!] Invalid map\n");
+	ft_printf("[x] Mapped parsed\n");
 	mlx_ptr = mlx_init();
 	if (!mlx_ptr)
-		error_exit(NULL, map_data, NULL, "[!] Couldn't initialize library\n");
+		error_exit(NULL, game.m, NULL, "[!] Couldn't init MLX\n");
 	ft_printf("[x] MLX initialized\n");
-	window_data = window_init(map_data, mlx_ptr, "so_long");
-	ft_printf("[x] Window initialized\n");
-	assets = init_assets(window_data, map_data);
-	render_map(window_data, map_data, assets);
+	game.w = window_init(game.m, mlx_ptr, "so_long");
+	game.a = init_assets(game.w, game.m);
+	ft_printf("[x] Window & assets initialized\n");
+	render_map(game.w, game.m, game.a);
 	ft_printf("[x] Map rendered\n");
-	mlx_loop(window_data->mlx_ptr);
+	main_mlx_loop(&game);
 	return (1);
 }

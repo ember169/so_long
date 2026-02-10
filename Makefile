@@ -6,7 +6,7 @@
 #    By: lgervet <42@leogervet.com>                 +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 0026/02/01 11:08:40 by gervet            #+#    #+#              #
-#    Updated: 2026/02/10 12:17:35 by lgervet          ###   ########.fr        #
+#    Updated: 2026/02/10 21:15:22 by lgervet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,9 @@ SRCS	:= \
 		srcs/parsing/path_finder.c \
 		srcs/graphics/window_manager.c \
 		srcs/graphics/renderer.c \
-		srcs/graphics/asset_manager.c
+		srcs/graphics/asset_manager.c \
+		srcs/events/ks_handler.c \
+		srcs/events/move_character.c
 OBJS	:= $(SRCS:.c=.o)
 
 ######## RULES ########
