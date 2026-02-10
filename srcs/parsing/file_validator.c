@@ -6,11 +6,11 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 10:35:26 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/06 14:43:19 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/10 10:48:48 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../../includes/so_long.h"
 
 /*
 ** _valid_borders:
@@ -57,7 +57,7 @@ static t_mdata	*_duplicate_map(t_mdata *mdata)
 	{
 		mdata->d_map[y] = malloc(ft_strlen(mdata->map[y]) * sizeof(char));
 			if (!mdata->d_map[y])
-				error_exit(NULL, mdata, "[!] Error initializing mdata->d_map[y]");
+				error_exit(NULL, mdata, NULL, "[!] Error initializing mdata->d_map[y]");
 		x = 0;
 		while (mdata->map[y][x])
 		{
@@ -74,11 +74,9 @@ static t_mdata	*_duplicate_map(t_mdata *mdata)
 
 int	valid_map(t_mdata *mdata)
 {
-	ft_printf("[ ] Checking map borders\n");
 	if (!(_valid_borders(mdata)))
 		return (0);
 	ft_printf("[x] Map borders checked\n");
-	ft_printf("[ ] Checking path\n");
 	if (!valid_path(_duplicate_map(mdata)))
 		return (0);
 	ft_printf("[x] Path checked\n");

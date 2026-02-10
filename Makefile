@@ -6,7 +6,7 @@
 #    By: lgervet <42@leogervet.com>                 +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 0026/02/01 11:08:40 by gervet            #+#    #+#              #
-#    Updated: 2026/02/06 14:35:41 by lgervet          ###   ########.fr        #
+#    Updated: 2026/02/10 12:17:35 by lgervet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,13 +26,14 @@ LDFLAGS	:= -L $(MLXPATH) -lmlx -L $(LIBPATH) -lft -lXext -lX11 -lm -lz
 
 SRCS	:= \
 		srcs/so_long.c \
-		srcs/utils/exit_handler.c \
-		srcs/utils/graphics.c \
+		srcs/utils/free_all.c \
+		srcs/utils/error_handler.c \
 		srcs/parsing/file_parser.c \
 		srcs/parsing/file_validator.c \
 		srcs/parsing/path_finder.c \
 		srcs/graphics/window_manager.c \
-		srcs/graphics/draw_map.c
+		srcs/graphics/renderer.c \
+		srcs/graphics/asset_manager.c
 OBJS	:= $(SRCS:.c=.o)
 
 ######## RULES ########

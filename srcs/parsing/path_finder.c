@@ -6,11 +6,11 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 14:34:36 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/06 15:02:22 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/10 10:48:25 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../../includes/so_long.h"
 
 /*
 ** _all_replaced:
@@ -112,6 +112,5 @@ int	valid_path(t_mdata *mdata)
 	}
 	if (!(_all_replaced(mdata)))
 		return (0);
-	ft_printf("[x] Valid path found !\n");
 	return (1);
 }

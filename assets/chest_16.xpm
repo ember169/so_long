@@ -1,0 +1,31 @@
+/* XPM */
+static const char *chest[] = {
+/* columns rows colors chars-per-pixel */
+"16 16 9 1 ",
+"  c #1C1117",
+". c #421B2E",
+"X c #56252F",
+"o c #7A3333",
+"O c #874040",
+"+ c #487085",
+"@ c #5A8CA6",
+"# c #8EBBD1",
+"$ c None",
+/* pixels */
+"$$$$$$$$$$$$$$$$",
+"$$$$$$$$$$$$$$$$",
+"$$  $$$$$$$$  $$",
+"  +.        .+  ",
+" O#XOOOOOOOOX#O ",
+" O+.OOOOOOOO.+O ",
+" O#XooooooooX#O ",
+" o@.oooooooo.@o ",
+" o+XooX..XooX+o ",
+" @@.@@.@@.@@.@@ ",
+"  +X  .+@.  X+  ",
+" X  XX    XX  X ",
+" XXXXXXXXXXXXXX ",
+" .XXXXXXXXXXXX. ",
+" .............. ",
+"                "
+};

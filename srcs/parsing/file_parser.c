@@ -6,11 +6,11 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 16:09:12 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/06 18:51:10 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/10 12:03:07 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../../includes/so_long.h"
 
 static void	_initialize_mdata(t_mdata *map_data)
 {
@@ -18,10 +18,10 @@ static void	_initialize_mdata(t_mdata *map_data)
 	map_data->row_nb = 0;
 	map_data->map = malloc(1025);
 	if (!map_data->map)
-		error_exit(NULL, map_data, "[!] Error initalizing map_data->map\n");
+		error_exit(NULL, map_data, NULL, "[!] Error initalizing map\n");
 	map_data->d_map = malloc(1025);
 	if (!map_data->map)
-		error_exit(NULL, map_data, "[!] Error initalizing map_data->d_map\n");
+		error_exit(NULL, map_data, NULL, "[!] Error initalizing d_map\n");
 	return ;
 }
 
@@ -45,7 +45,7 @@ static int	_count_columns(t_mdata *map_data)
 			x--;
 		}
 		if (tmp != 0 && x != tmp)
-			error_exit(NULL, map_data, "[!] Uneven columns number\n");
+			error_exit(NULL, map_data, NULL, "[!] Uneven columns number\n");
 		tmp = x;
 		y++;
 	}
@@ -61,7 +61,7 @@ static void	_parse_data(t_mdata *map_data, int fd)
 	while (map_data->map[i])
 	{
 		if (i == 1025)
-			error_exit(NULL, map_data, "[!] Map size > 1025 rows\n");
+			error_exit(NULL, map_data, NULL, "[!] Map size > 1025 rows\n");
 		map_data->map[++i] = get_next_line(fd);
 	}
 	map_data->row_nb = i;
@@ -75,11 +75,11 @@ t_mdata	*parse_file(char *arg)
 
 	map_data = (t_mdata *)malloc(sizeof(t_mdata));
 	if (!map_data)
-		error_exit(NULL, NULL, "[!] Error initalizing t_mdata\n");
+		error_exit(NULL, NULL, NULL, "[!] Error initalizing t_mdata\n");
 	_initialize_mdata(map_data);
 	fd = open(arg, O_RDONLY);
 	if (!fd)
-		error_exit(NULL, map_data, "[!] Error opening file\n");
+		error_exit(NULL, map_data, NULL, "[!] Error opening file\n");
 	_parse_data(map_data, fd);
 	close(fd);
 	return (map_data);

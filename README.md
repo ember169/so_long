@@ -35,18 +35,20 @@ __Building ...__
 - [Basic Graph Theory (BFS, DFS, and Floodfill), Albert GURAL, 2011](https://activities.tjhsst.edu/sct/lectures/1112/bfsdfs100711.pdf)
 - [Backtracking, Wikipedia](https://en.wikipedia.org/wiki/Backtracking)
 
-## AI Usage
-I used AI (Gemini 3 Flash) as a low-level technical advisor and logic validator. The collaboration focused on resolving build system conflicts, debugging pointer-level issues in the graphics engine, hardening and debugging a path-validation algorithm.
+## AI Usage (Gemini 3 Flash)
+Technical advisor for build system debugging, memory optimization, and algorithmic hardening.
 
-### Build System & Toolchain Debugging
-- **Linker error resolution:** Assisted in diagnosing and fixing "multiple definition" errors in the Libft archive by identifying stale object files.
-- **Makefile optimization:** Helped refine the build rules, specifically fixing path variable typos (e.g., `LIB_PATH` vs `LIBPATH`) that caused recursive compilation failures.
+### Build & Graphics
+- **Linker Fix:** Resolved "multiple definition" errors by diagnosing stale object files in `libft.a`.
+- **Makefile:** Fixed recursive build failures caused by path variable typos (`LIB_PATH` vs `LIBPATH`).
+- **Coordinate Mapping:** Corrected Row/Column inversion during 2D-to-pixel translation.
+- **Rendering:** Fixed diagonal-line artifacts by refactoring the `mlx_pixel_put` loop logic.
 
-### Graphics Engine Logic (MiniLibX)
-- **Coordinate mapping:** Identified a critical inversion between X (columns) and Y (rows) coordinates during the translation from the 2D map array to the pixel-based window display.
-- **Rendering optimization:** Diagnosed a logic error where the rendering loop was drawing diagonal lines instead of filled tiles during testing phase with `mlx_pixel_put`.
+### Logic & Validation
+- **Geometry:** Removed incorrect `row_nb == col_nb` restriction (rectangles include squares).
+- **Pathfinding:** Hardened flood-fill logic to prevent false positives on unreachable exits/collectibles.
+- **Memory:** Refactored assets from heap-allocated pointers to stack-allocated structures.
+- **Layering:** Solved XPM transparency issues via a background-first (floor-under-all) rendering pass.
 
-### Map Validation & Algorithmic Logic
-- **Geometry Logic Correction:** Identified a logic error regarding map shape constraints; clarified that "rectangular" requirements include square maps, leading to the removal of an incorrect `row_nb == col_nb` restriction.
-- **Iterative flood fill logic:** presented the core logic of the pathfinding algorithm to verify the reachability of all collectibles ('C') and the exit ('E').
-- **Logic hardening:** Identified and corrected a major security flaw in the pathfinder that would have incorrectly validated maps with an unreachable exit.
+## Game assets
+All game assets credit goes to [Robert (0x72)](https://0x72.itch.io/16x16-dungeon-tileset).

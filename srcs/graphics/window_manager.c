@@ -6,11 +6,11 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 11:17:03 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/05 12:59:34 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/09 14:17:13 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../../includes/so_long.h"
 
 t_wdata	*window_init(t_mdata *mdata, int *mlx, char *title)
 {
@@ -18,7 +18,7 @@ t_wdata	*window_init(t_mdata *mdata, int *mlx, char *title)
 
 	window = (t_wdata *)malloc(sizeof(t_wdata));
 	if (!window)
-		error_exit(window, mdata, "[!] Error initalizing t_wdata\n");
+		error_exit(window, mdata, NULL, "[!] Error initalizing t_wdata\n");
 	window->mlx_ptr = NULL;
 	window->w_ptr = NULL;
 	window->w_title = NULL;
@@ -29,6 +29,6 @@ t_wdata	*window_init(t_mdata *mdata, int *mlx, char *title)
 	window->w_ptr = mlx_new_window(window->mlx_ptr, window->width, \
 		window->height, window->w_title);
 	if (!window->w_ptr)
-		error_exit(window, mdata, "[!] Error initalizing window->w_ptr\n");
+		error_exit(window, mdata, NULL, "[!] Error initalizing window->w_ptr\n");
 	return (window);
 }
