@@ -6,7 +6,7 @@
 #    By: lgervet <42@leogervet.com>                 +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 0026/02/01 11:08:40 by gervet            #+#    #+#              #
-#    Updated: 2026/02/10 21:15:22 by lgervet          ###   ########.fr        #
+#    Updated: 2026/02/11 15:06:33 by lgervet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,14 +26,14 @@ LDFLAGS	:= -L $(MLXPATH) -lmlx -L $(LIBPATH) -lft -lXext -lX11 -lm -lz
 
 SRCS	:= \
 		srcs/so_long.c \
+		srcs/initializer.c \
 		srcs/utils/free_all.c \
 		srcs/utils/error_handler.c \
+		srcs/utils/line_counter.c \
 		srcs/parsing/file_parser.c \
 		srcs/parsing/file_validator.c \
 		srcs/parsing/path_finder.c \
-		srcs/graphics/window_manager.c \
 		srcs/graphics/renderer.c \
-		srcs/graphics/asset_manager.c \
 		srcs/events/ks_handler.c \
 		srcs/events/move_character.c
 OBJS	:= $(SRCS:.c=.o)

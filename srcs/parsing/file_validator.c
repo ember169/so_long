@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 10:35:26 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/10 10:48:48 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/11 15:16:23 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,10 @@ static t_mdata	*_duplicate_map(t_mdata *mdata)
 	y = 0;
 	while (mdata->map[y])
 	{
-		mdata->d_map[y] = malloc(ft_strlen(mdata->map[y]) * sizeof(char));
-			if (!mdata->d_map[y])
-				error_exit(NULL, mdata, NULL, "[!] Error initializing mdata->d_map[y]");
+		mdata->d_map[y] = ft_calloc((ft_strlen(mdata->map[y]) + 1), \
+		sizeof(char));
+		if (!mdata->d_map[y])
+			error_exit(NULL, mdata, NULL, "[!] Error initializing d_map[y]");
 		x = 0;
 		while (mdata->map[y][x])
 		{

@@ -6,28 +6,23 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 15:02:20 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/10 21:32:52 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/11 13:42:54 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
-static void	_update_counter(t_game *g)
+void	update_counter(t_game *g)
 {
 	ft_printf("Movements: %d\n", g->moves);
 }
 
 static int	handle_key_release(int key, t_game *g)
 {
-	int	tmp;
-
-	tmp = g->moves;
 	if (key == ESC_MAC || key == ESC_LNX)
-        error_exit(g->w, g->m, g->a, "[i] Escaping...");
+		error_exit(g->w, g->m, g->a, "[i] Escaping...\n");
 	if (key == UP_W || key == DOWN_S || key == LEFT_A || key == RIGHT_D)
 		move_char(key, g);
-	if (g->moves > tmp)
-		update_counter(g);
 	return (0);
 }
 

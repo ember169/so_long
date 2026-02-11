@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 21:13:07 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/10 21:35:34 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/11 13:45:08 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,54 @@
 
 static void	_move_up(t_game *g)
 {
-	
+	if (g->player_pos.y > 0 \
+		&& g->m->map[g->player_pos.y - 1][g->player_pos.x]	!= '1')
+	{
+		ft_printf("Moving up\n");
+		render_player(g, g->player_pos.x, g->player_pos.y + 1);
+		g->moves++;
+		update_counter(g);
+	}
+	return ;
 }
 
 static void	_move_down(t_game *g)
 {
-
+	if (g->player_pos.y < g->m->row_nb \
+		&& g->m->map[g->player_pos.y + 1][g->player_pos.x] != '1')
+	{
+		ft_printf("Moving down\n");
+		render_player(g, g->player_pos.x, g->player_pos.y + 1);
+		g->moves++;
+		update_counter(g);
+	}
+	return ;
 }
 
 static void	_move_left(t_game *g)
 {
-
+	if (g->player_pos.x > 0 \
+		&& g->m->map[g->player_pos.y][g->player_pos.x - 1] != '1')
+	{
+		ft_printf("Moving left\n");
+		render_player(g, g->player_pos.x - 1, g->player_pos.y);
+		g->moves++;
+		update_counter(g);
+	}
+	return ;
 }
 
 static void	_move_right(t_game *g)
 {
-	
+	if (g->player_pos.x < g->m->col_nb \
+		&& g->m->map[g->player_pos.y][g->player_pos.x + 1] != '1')
+	{
+		ft_printf("Moving right\n");
+		render_player(g, g->player_pos.x + 1, g->player_pos.y);
+		g->moves++;
+		update_counter(g);
+	}
+	return ;
 }
 
 void	move_char(int key, t_game *g)
@@ -42,5 +74,4 @@ void	move_char(int key, t_game *g)
 		_move_left(g);
 	if (key == RIGHT_D)
 		_move_right(g);
-	g->moves++;
 }

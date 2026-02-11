@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_handler.c                                    :+:      :+:    :+:   */
+/*   macros.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/10 12:06:16 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/11 15:10:37 by lgervet          ###   ########.fr       */
+/*   Created: 2026/02/11 10:35:52 by lgervet           #+#    #+#             */
+/*   Updated: 2026/02/11 13:06:29 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/so_long.h"
+#ifndef MACRO_H
+# define MACRO_H
 
-static void	print_error(char *msg)
-{
-	if (!msg)
-		msg = "[!] Error\n";
-	write(2, msg, ft_strlen(msg));
-	return ;
-}
+# define TILE_SIZE 	64
+# define UP_W		119
+# define DOWN_S		115
+# define RIGHT_D	100
+# define LEFT_A		97
+# define ESC_LNX	65307
+# define ESC_MAC	53
 
-void	error_exit(t_wdata *w, t_mdata *m, t_assets *a, char *errmsg)
-{
-	print_error(errmsg);
-	mlx_loop_end(w->mlx_ptr);
-	free_all(w, m, a);
-	ft_printf("[i] Everything has been properly freed, exiting cleanly\n");
-	exit(1);
-}
+#endif

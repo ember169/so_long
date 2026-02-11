@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 14:34:36 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/10 10:48:25 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/11 10:01:03 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int	valid_path(t_mdata *mdata)
 	i = 0;
 	while (i < (mdata->col_nb * mdata->row_nb))
 	{
-		if(!(_replace_loop(mdata)))
+		if (!(_replace_loop(mdata)))
 			break ;
 		i++;
 	}

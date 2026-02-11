@@ -6,50 +6,28 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 16:09:12 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/10 12:03:07 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/11 15:12:24 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
-static void	_initialize_mdata(t_mdata *map_data)
+static void	trim_newline(char *line)
 {
-	map_data->col_nb = 0;
-	map_data->row_nb = 0;
-	map_data->map = malloc(1025);
-	if (!map_data->map)
-		error_exit(NULL, map_data, NULL, "[!] Error initalizing map\n");
-	map_data->d_map = malloc(1025);
-	if (!map_data->map)
-		error_exit(NULL, map_data, NULL, "[!] Error initalizing d_map\n");
-	return ;
-}
+	int	i;
 
-static int	_count_columns(t_mdata *map_data)
-{
-	int	y;
-	int	x;
-	int	tmp;
-
-	tmp = 0;
-	y = 0;
-	x = 0;
-	while (map_data->map[y])
+	if (!line)
+		return ;
+	i = 0;
+	while (line[i])
 	{
-		x = 0;
-		while (map_data->map[y][x])
-			x++;
-		if (map_data->map[y][x - 1] == '\n')
+		if (line[i] == '\n')
 		{
-			map_data->map[y][x - 1] = '\0';
-			x--;
+			line[i] = '\0';
+			return ;
 		}
-		if (tmp != 0 && x != tmp)
-			error_exit(NULL, map_data, NULL, "[!] Uneven columns number\n");
-		tmp = x;
-		y++;
+		i++;
 	}
-	return (tmp);
 }
 
 static void	_parse_data(t_mdata *map_data, int fd)
@@ -57,30 +35,27 @@ static void	_parse_data(t_mdata *map_data, int fd)
 	int	i;
 
 	i = 0;
-	map_data->map[i] = get_next_line(fd);
-	while (map_data->map[i])
+	while (1)
 	{
-		if (i == 1025)
-			error_exit(NULL, map_data, NULL, "[!] Map size > 1025 rows\n");
-		map_data->map[++i] = get_next_line(fd);
+		map_data->map[i] = get_next_line(fd);
+		if (!map_data->map[i])
+			break ;
+		trim_newline(map_data->map[i]);
+		i++;
 	}
+	map_data->map[i] = NULL;
 	map_data->row_nb = i;
-	map_data->col_nb = _count_columns(map_data);
+	map_data->col_nb = ft_strlen(map_data->map[0]);
 }
 
-t_mdata	*parse_file(char *arg)
+t_mdata	*parse_file(t_game *game, char *arg)
 {
-	t_mdata	*map_data;
 	int		fd;
 
-	map_data = (t_mdata *)malloc(sizeof(t_mdata));
-	if (!map_data)
-		error_exit(NULL, NULL, NULL, "[!] Error initalizing t_mdata\n");
-	_initialize_mdata(map_data);
 	fd = open(arg, O_RDONLY);
 	if (!fd)
-		error_exit(NULL, map_data, NULL, "[!] Error opening file\n");
-	_parse_data(map_data, fd);
+		error_exit(NULL, game->m, NULL, "[!] Error opening file\n");
+	_parse_data(game->m, fd);
 	close(fd);
-	return (map_data);
+	return (game->m);
 }

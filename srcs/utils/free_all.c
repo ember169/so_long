@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 11:17:03 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/10 12:06:07 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/11 15:27:37 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,8 @@ static void	_free_map(t_mdata *mdata)
 static void	_free_window(t_wdata *wdata)
 {
 	if (wdata->w_ptr)
-	{
-		mlx_clear_window(wdata->mlx_ptr, wdata->w_ptr);
-		mlx_destroy_window(wdata->mlx_ptr, wdata->w_ptr);
-	}
+		mlx_destroy_display(wdata->mlx_ptr);
+	free(wdata->mlx_ptr);
 	free(wdata);
 }
 
@@ -57,6 +55,8 @@ static void	_free_assets(t_wdata *window, t_assets *assets)
 		mlx_destroy_image(window->mlx_ptr, assets->wall.ptr);
 	if (assets->player.ptr)
 		mlx_destroy_image(window->mlx_ptr, assets->player.ptr);
+	if (window->w_ptr)
+		mlx_destroy_window(window->mlx_ptr, window->w_ptr);
 	free(assets);
 }
 
@@ -64,9 +64,9 @@ void	free_all(t_wdata *window, t_mdata *mdata, t_assets *assets)
 {
 	if (assets)
 		_free_assets(window, assets);
-	if (mdata)
-		_free_map(mdata);
 	if (window)
 		_free_window(window);
+	if (mdata)
+		_free_map(mdata);
 }
 
