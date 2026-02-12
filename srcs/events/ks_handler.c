@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 15:02:20 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/11 13:42:54 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/12 10:49:46 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	update_counter(t_game *g)
 static int	handle_key_release(int key, t_game *g)
 {
 	if (key == ESC_MAC || key == ESC_LNX)
-		error_exit(g->w, g->m, g->a, "[i] Escaping...\n");
+		def_exit(g->w, g->m, g->a, "[i] Escaping...\n");
 	if (key == UP_W || key == DOWN_S || key == LEFT_A || key == RIGHT_D)
 		move_char(key, g);
 	return (0);

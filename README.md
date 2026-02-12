@@ -35,6 +35,7 @@ __Building ...__
 - [Basic Graph Theory (BFS, DFS, and Floodfill), Albert GURAL, 2011](https://activities.tjhsst.edu/sct/lectures/1112/bfsdfs100711.pdf)
 - [Backtracking, Wikipedia](https://en.wikipedia.org/wiki/Backtracking)
 - [MLX events, 42 Docs](https://harm-smits.github.io/42docs/libs/minilibx/events.html)
+- [At Least I Know How to Manipulate an MLX Image, Medium, 2025](https://medium.com/@efinda/at-least-i-know-how-to-manipulate-an-mlx-image-%EF%B8%8F-c2a74ff7b0e5)
 
 ## AI Usage (Gemini 3 Flash)
 Technical advisor for build system debugging, memory optimization, and algorithmic hardening.

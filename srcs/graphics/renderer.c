@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 15:33:00 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/11 13:40:54 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/12 11:17:33 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,10 @@ static void	_render_collectible(t_game g, int x, int y)
 
 void	render_player(t_game *g, int x, int y)
 {
-	ft_printf("Player was %d:%d\n", x, y);
 	mlx_put_image_to_window(g->w->mlx_ptr, g->w->w_ptr, g->a->player.ptr, \
 	x * TILE_SIZE, y * TILE_SIZE);
 	g->player_pos.x = x;
 	g->player_pos.y = y;
-	ft_printf("Player moved to %d:%d\n", g->player_pos.x, g->player_pos.y);
 }
 
 void	render_map(t_game *g)

@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 10:24:26 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/11 15:08:27 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/12 11:15:33 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_wdata		*init_wdata(t_mdata *m, int *mlx, char *title);
 t_assets	*init_assets(t_wdata *w, t_mdata *m);
 void		free_all(t_wdata *window, t_mdata *mdata, t_assets *assets);
 void		error_exit(t_wdata *w, t_mdata *m, t_assets *a, char *errmsg);
+void		def_exit(t_wdata *w, t_mdata *m, t_assets *a, char *msg);
 int			valid_map(t_mdata *mdata);
 int			valid_path(t_mdata *mdata);
 void		render_map(t_game *g);
