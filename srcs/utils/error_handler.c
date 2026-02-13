@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 12:06:16 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/12 16:10:15 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/13 13:04:40 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ static void	print_error(char *msg)
 void	error_exit(t_wdata *w, t_mdata *m, t_assets *a, char *errmsg)
 {
 	print_error(errmsg);
-	mlx_loop_end(w->mlx_ptr);
+	if (w)
+		mlx_loop_end(w->mlx_ptr);
 	free_all(w, m, a);
 	ft_printf("[i] Everything has been properly freed, exiting cleanly\n");
 	exit(1);

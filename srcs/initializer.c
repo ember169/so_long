@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 11:17:03 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/12 15:48:34 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/13 13:10:10 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ t_mdata	*init_mdata(char *file_path)
 	if (!m)
 		error_exit(NULL, NULL, NULL, "[!] Error initalizing t_mdata\n");
 	m->c_nb = count_file_collectibles(file_path);
+	if (m->c_nb < 1)
+		error_exit(NULL, m, NULL, "[!] 0 collectibles\n");
 	m->c_array = ft_calloc(m->c_nb, sizeof(t_collect));
 	if (!m->c_array)
 		error_exit(NULL, m, NULL, "[!] Error initalizing c_array\n");

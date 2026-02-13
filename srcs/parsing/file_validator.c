@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 10:35:26 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/12 15:10:59 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/13 13:01:55 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,42 @@ static int	_valid_borders(t_mdata *mdata)
 		i++;
 	}
 	return (1);
+}
+
+/*
+** _valid_components_nb:
+**     Verifies a map contains 1 exit, 1 starting position and at least 1
+**	   collectible, 
+**
+**     @param param  Description.
+**     @return 1 OK / 0 KO.
+*/
+static int	_valid_components_nb(t_mdata *m)
+{
+	int		count[3];
+	int		x;
+	int		y;
+
+	count[0] = 0;
+	count[1] = 0;
+	count[2] = 0;
+	y = 0;
+	while (m->map[y])
+	{
+		x = 0;
+		while (m->map[y][x])
+		{
+			if (m->map[y][x] == 'C')
+				count[0]++;
+			if (m->map[y][x] == 'E')
+				count[1]++;
+			if (m->map[y][x] == 'P')
+				count[2]++;
+			x++;
+		}
+		y++;
+	}
+	return (count[0] >= 1 && count[1] == 1 && count[2] == 1);
 }
 
 static t_collect	*_add_collectible(t_mdata *mdata, int x, int y, int i)
@@ -96,6 +132,9 @@ int	valid_map(t_mdata *mdata)
 	if (!(_valid_borders(mdata)))
 		return (0);
 	ft_printf("[x] Map borders checked\n");
+	if (!(_valid_components_nb(mdata)))
+		return (0);
+	ft_printf("[x] Components number checked\n");
 	if (!valid_path(_duplicate_map(mdata)))
 		return (0);
 	ft_printf("[x] Path checked\n");
