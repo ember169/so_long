@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 10:35:26 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/11 15:16:23 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/12 15:10:59 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,21 @@ static int	_valid_borders(t_mdata *mdata)
 	return (1);
 }
 
+static t_collect	*_add_collectible(t_mdata *mdata, int x, int y, int i)
+{
+	t_collect	*new_chest;
+
+	new_chest = ft_calloc(1, sizeof(t_collect));
+	if (!new_chest)
+		error_exit(NULL, mdata, NULL, "[!] Error adding collectible\n");
+	new_chest->uid = i;
+	new_chest->pos.x = x;
+	new_chest->pos.y = y;
+	ft_printf("[ ] Adding chest #%d to entities [%d] @ %d:%d\n", \
+		new_chest->uid, (i - 1), new_chest->pos.x, new_chest->pos.y);
+	return (new_chest);
+}
+
 /*
 ** _duplicate_map:
 **     Duplicates the map in its own struct child + replaces 'P' with 'V'
@@ -47,30 +62,33 @@ static int	_valid_borders(t_mdata *mdata)
 **     @param mdata  map struct
 **     @return pointer toward struct
 */
-static t_mdata	*_duplicate_map(t_mdata *mdata)
+static t_mdata	*_duplicate_map(t_mdata *m)
 {
 	int	x;
 	int	y;
+	int	i;
 
 	y = 0;
-	while (mdata->map[y])
+	i = 0;
+	while (m->map[y])
 	{
-		mdata->d_map[y] = ft_calloc((ft_strlen(mdata->map[y]) + 1), \
-		sizeof(char));
-		if (!mdata->d_map[y])
-			error_exit(NULL, mdata, NULL, "[!] Error initializing d_map[y]");
+		m->d_map[y] = ft_calloc((ft_strlen(m->map[y]) + 1),	sizeof(char));
+		if (!m->d_map[y])
+			error_exit(NULL, m, NULL, "[!] Error initializing d_map[y]");
 		x = 0;
-		while (mdata->map[y][x])
+		while (m->map[y][x])
 		{
-			if (mdata->map[y][x] == 'P')
-				mdata->d_map[y][x] = 'V';
+			if (m->map[y][x] == 'C' && i++ <= m->c_nb)
+				m->c_array[i - 1] = _add_collectible(m, x, y, i);
+			if (m->map[y][x] == 'P')
+				m->d_map[y][x] = 'V';
 			else
-				mdata->d_map[y][x] = mdata->map[y][x];
+				m->d_map[y][x] = m->map[y][x];
 			x++;
 		}
 		y++;
 	}
-	return (mdata);
+	return (m);
 }
 
 int	valid_map(t_mdata *mdata)

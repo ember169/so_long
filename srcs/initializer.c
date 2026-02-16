@@ -6,18 +6,42 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 11:17:03 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/11 15:19:53 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/12 15:48:34 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
+void	init_map_render(t_game *g)
+{
+	int	y;
+	int	x;
+
+	render_floor_walls(g->w, g->m, g->a);
+	y = 0;
+	while (g->m->map[y])
+	{
+		x = 0;
+		while (g->m->map[y][x])
+		{
+			if (g->m->map[y][x] == 'P')
+				render_player(g, x, y);
+			else if (g->m->map[y][x] == 'C')
+				render_collectible(*g, x, y);
+			else if (g->m->map[y][x] == 'E')
+				render_exit(g, x, y);
+			x++;
+		}
+		y++ ;
+	}
+}
+
 static t_img	_load_texture(t_wdata *w, t_mdata *m, t_assets *a, char *path)
 {
 	t_img	img;
 
-	img.ptr = mlx_xpm_file_to_image(w->mlx_ptr, \
-		path, &img.width, &img.height);
+	img.ptr = mlx_xpm_file_to_image(w->mlx_ptr, path, &img.width, \
+		&img.height);
 	if (!img.ptr)
 		error_exit(w, m, a, "[!] Error loading texture\n");
 	return (img);
@@ -31,7 +55,7 @@ t_assets	*init_assets(t_wdata *w, t_mdata *m)
 	if (!a)
 		error_exit(w, m, NULL, "[!] Error initializing assets\n");
 	ft_bzero(a, sizeof(t_assets));
-	a->player = _load_texture(w, m, a, "assets/player_final.xpm");
+	a->player = _load_texture(w, m, a, "assets/player_64.xpm");
 	a->wall = _load_texture(w, m, a, "assets/wall_64.xpm");
 	a->floor = _load_texture(w, m, a, "assets/floor_64.xpm");
 	a->exit = _load_texture(w, m, a, "assets/exit_64.xpm");
@@ -48,6 +72,10 @@ t_mdata	*init_mdata(char *file_path)
 	m = (t_mdata *)ft_calloc(1, sizeof(t_mdata));
 	if (!m)
 		error_exit(NULL, NULL, NULL, "[!] Error initalizing t_mdata\n");
+	m->c_nb = count_file_collectibles(file_path);
+	m->c_array = ft_calloc(m->c_nb, sizeof(t_collect));
+	if (!m->c_array)
+		error_exit(NULL, m, NULL, "[!] Error initalizing c_array\n");
 	m->map = ft_calloc(count + 1, sizeof(char *));
 	if (!m->map)
 		error_exit(NULL, m, NULL, "[!] Error initalizing map\n");
@@ -56,7 +84,6 @@ t_mdata	*init_mdata(char *file_path)
 		error_exit(NULL, m, NULL, "[!] Error initalizing d_map\n");
 	return (m);
 }
-
 
 t_wdata	*init_wdata(t_mdata *m, int *mlx, char *title)
 {

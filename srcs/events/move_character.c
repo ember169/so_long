@@ -6,78 +6,85 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 21:13:07 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/12 11:16:53 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/12 16:12:24 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
-static void	_render_floor(t_game *g, int x, int y)
+/*
+** check_pos:
+**     Checks current position : if on E and has all collected or is on C 
+**
+**     @param *g  	   game struct
+**     @param next_x   future x pos
+**	   @param next_y.  future y pos
+*/
+void	check_pos(t_game *g, int next_x, int next_y)
 {
-	mlx_put_image_to_window(g->w->mlx_ptr, g->w->w_ptr, g->a->floor.ptr, \
-	x * TILE_SIZE, y * TILE_SIZE);
+	if (g->m->map[next_y][next_x] == 'E')
+	{
+		if (g->collected == g->m->c_nb)
+		{
+			render_floor(g, g->player_pos.x, g->player_pos.y);
+			render_player(g, next_x, next_y);
+			def_exit(g->w, g->m, g->a, "> Congrats, you won the map.\n");
+		}
+	}
+	if (g->m->map[g->player_pos.y][g->player_pos.x] == 'E')
+		render_exit(g, g->player_pos.x, g->player_pos.y);
+	else
+		render_floor(g, g->player_pos.x, g->player_pos.y);
 }
 
-static void	_move_up(t_game *g)
+void	move_up(t_game *g)
 {
-	if (g->player_pos.y > 0 \
-		&& g->m->map[g->player_pos.y - 1][g->player_pos.x]	!= '1')
+	if (g->player_pos.y > 0 && g->m->map[g->player_pos.y - 1][g->player_pos.x]\
+		 != '1')
 	{
-		_render_floor(g, g->player_pos.x, g->player_pos.y);
-		render_player(g, g->player_pos.x, g->player_pos.y + 1);
+		check_pos(g, g->player_pos.x, g->player_pos.y - 1);
+		render_player(g, g->player_pos.x, g->player_pos.y - 1);
 		g->moves++;
-		update_counter(g);
+		ft_printf("> Movements: %d\n", g->moves);
 	}
 	return ;
 }
 
-static void	_move_down(t_game *g)
+void	move_down(t_game *g)
 {
 	if (g->player_pos.y < g->m->row_nb \
 		&& g->m->map[g->player_pos.y + 1][g->player_pos.x] != '1')
 	{
-		_render_floor(g, g->player_pos.x, g->player_pos.y);
+		check_pos(g, g->player_pos.x, g->player_pos.y + 1);
 		render_player(g, g->player_pos.x, g->player_pos.y + 1);
 		g->moves++;
-		update_counter(g);
+		ft_printf("> Movements: %d\n", g->moves);
 	}
 	return ;
 }
 
-static void	_move_left(t_game *g)
+void	move_left(t_game *g)
 {
 	if (g->player_pos.x > 0 \
 		&& g->m->map[g->player_pos.y][g->player_pos.x - 1] != '1')
 	{
-		_render_floor(g, g->player_pos.x, g->player_pos.y);
+		check_pos(g, g->player_pos.x - 1, g->player_pos.y);
 		render_player(g, g->player_pos.x - 1, g->player_pos.y);
 		g->moves++;
-		update_counter(g);
+		ft_printf("> Movements: %d\n", g->moves);
 	}
 	return ;
 }
 
-static void	_move_right(t_game *g)
+void	move_right(t_game *g)
 {
 	if (g->player_pos.x < g->m->col_nb \
 		&& g->m->map[g->player_pos.y][g->player_pos.x + 1] != '1')
 	{
-		_render_floor(g, g->player_pos.x, g->player_pos.y);
+		check_pos(g, g->player_pos.x + 1, g->player_pos.y);
 		render_player(g, g->player_pos.x + 1, g->player_pos.y);
 		g->moves++;
-		update_counter(g);
+		ft_printf("> Movements: %d\n", g->moves);
 	}
 	return ;
-}
-
-void	move_char(int key, t_game *g)
-{
-	if (key == UP_W)
-		_move_up(g);
-	if (key == DOWN_S)
-		_move_down(g);
-	if (key == LEFT_A)
-		_move_left(g);
-	if (key == RIGHT_D)
-		_move_right(g);
 }

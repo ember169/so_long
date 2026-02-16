@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 10:56:54 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/11 15:26:16 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/12 12:54:52 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	main(int ac, char **av)
 		return (0);
 	ft_bzero(&game, sizeof(t_game));
 	_initialize_game(&game, av[1]);
-	render_map(&game);
+	init_map_render(&game);
 	ft_printf("[x] Map rendered\n");
 	main_mlx_loop(&game);
 	return (1);
