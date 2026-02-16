@@ -1,7 +1,8 @@
 __This project has been created as part of the 42 curriculum by lgervet__
 # so_long - A small 2D game
-This project is a small 2D game. Its purpose is to work with textures, sprites, and other basic gameplay elements.<br>
-[Subject (pdf)](cdn.intra.42.fr/pdf/pdf/185033/en.subject.pdf)<br>
+This project is a small 2D game. Its purpose is to work with textures, sprites, and other basic gameplay elements.
+[Video of a map being played](https://github.com/user-attachments/assets/5cb85c1d-4823-42a9-a819-59e8b7603aa9)
+[Subject (pdf)](cdn.intra.42.fr/pdf/pdf/185033/en.subject.pdf)
 
 ## Description
 2D top-down game developed as part of the 42 Common Core curriculum. The goal is to create a basic engine using the MiniLibX library, focusing on window management, event handling (keyboard and mouse), and sprite rendering. <br>
@@ -9,7 +10,7 @@ This project is a small 2D game. Its purpose is to work with textures, sprites, 
 ### The game
 The player must collect all items on the map and reach the exit in the shortest number of moves possible.
 - **Graphics:** 2D tileset-based rendering.
-- **Controls:** WASD or Arrow keys to move.
+- **Controls:** WASD keys to move.
 - **Mechanics:** Move counting in the terminal, wall collisions, and collectible management.
 
 ### Technical constraints
@@ -18,13 +19,18 @@ The player must collect all items on the map and reach the exit in the shortest 
 - **Error Handling:** The program must parse .ber map files and handle invalid configurations (missing exit/player/collectible, non-rectangular maps, or unreachable goals) by displaying a clean Error message.
 - **Algorithm:** Includes a pathfinding check (iterative flood fill) to ensure the map is actually playable before launching.
 
+### Technical flowchart
+[Complete technical flowchart](https://github.com/user-attachments/assets/fb5d0461-966d-42bc-b7e8-3b10bb203c16)
+
 ## Instructions
 
 ### Compilation
-__Building ...__
+Run `make` in the root directory to generate the `so_long` binary.
 
 ### Execution
-__Building ...__
+`./so_long <PATH_TO_MAP>`<br>
+To use one of the premade maps:<br>
+`./so_long maps/valid_multiple.ber`
 
 # Ressources
 
@@ -43,7 +49,7 @@ Technical advisor for build system debugging, memory optimization, and algorithm
 ### Build & Graphics
 - **Linker Fix:** Resolved "multiple definition" errors by diagnosing stale object files in `libft.a`.
 - **Makefile:** Fixed recursive build failures caused by path variable typos (`LIB_PATH` vs `LIBPATH`).
-- **Coordinate Mapping:** Corrected Row/Column inversion during 2D-to-pixel translation.
+- **Coordinate Mapping:** Corrected Row/Column inversion.
 - **Rendering:** Fixed diagonal-line artifacts by refactoring the `mlx_pixel_put` loop logic.
 
 ### Logic & Validation
@@ -52,9 +58,15 @@ Technical advisor for build system debugging, memory optimization, and algorithm
 - **Memory:** Refactored assets from heap-allocated pointers to stack-allocated structures.
 - **Layering:** Solved XPM transparency issues via a background-first (floor-under-all) rendering pass.
 
-### Data Architecture
-- **Structural Encapsulation:** Implemented a top-level `t_game` container to unify window, map, and asset structures. This simplifies event handling by allowing a single reference pointer to be passed through MiniLibX hooks.
-- **Pointer Type Correction:** Refactored MLX resource pointers from `int *` to `void *` to ensure alignment with library specifications and prevent undefined behavior.
+### Data & Events
+- **Structural Encapsulation:** Designed a top-level `t_game` container to unify window, map, and asset structures for efficient event hook parameter passing.
+- **Pointer Standardization:** Refactored MLX resource pointers from `int *` to `void *` to align with library specifications.
+- **Window Closing:** Corrected implementation of `Event 17 (DestroyNotify)` with the proper mask.
+
+### Memory Management
+- **Asset Optimization:** Refactored textures structures to reduce malloc overhead.
+- **Valgrind Analysis:** Identified and documented non-fatal "uninitialized byte" warnings in writev as internal MiniLibX/X11 errors and not project-level leaks.
+- **Unified Cleanup:** Centralized all deallocation logic to guarantee a 100% leak-free exit on all termination signals.
 
 ## Game assets
 All game assets credit goes to [Robert (0x72)](https://0x72.itch.io/16x16-dungeon-tileset).
