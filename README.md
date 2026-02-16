@@ -2,7 +2,9 @@ __This project has been created as part of the 42 curriculum by lgervet__
 # so_long - A small 2D game
 This project is a small 2D game. Its purpose is to work with textures, sprites, and other basic gameplay elements.<br>
 
-<iframe width="560" height="315" src="https://github.com/user-attachments/assets/5cb85c1d-4823-42a9-a819-59e8b7603aa9" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br>
+<p align="center" width="100%">
+<video src="https://github.com/user-attachments/assets/5cb85c1d-4823-42a9-a819-59e8b7603aa9" width="80%" controls></video>
+</p>
 
 [Subject (pdf)](cdn.intra.42.fr/pdf/pdf/185033/en.subject.pdf)
 
