@@ -1,7 +1,7 @@
 __This project has been created as part of the 42 curriculum by lgervet__
 # so_long - A small 2D game
 This project is a small 2D game. Its purpose is to work with textures, sprites, and other basic gameplay elements.
-[Video of a map being played](https://github.com/user-attachments/assets/5cb85c1d-4823-42a9-a819-59e8b7603aa9)
+![Video of a map being played](https://github.com/user-attachments/assets/5cb85c1d-4823-42a9-a819-59e8b7603aa9)
 [Subject (pdf)](cdn.intra.42.fr/pdf/pdf/185033/en.subject.pdf)
 
 ## Description
@@ -20,7 +20,7 @@ The player must collect all items on the map and reach the exit in the shortest 
 - **Algorithm:** Includes a pathfinding check (iterative flood fill) to ensure the map is actually playable before launching.
 
 ### Technical flowchart
-[Complete technical flowchart](https://github.com/user-attachments/assets/fb5d0461-966d-42bc-b7e8-3b10bb203c16)
+![Complete technical flowchart](https://github.com/user-attachments/assets/fb5d0461-966d-42bc-b7e8-3b10bb203c16)
 
 ## Instructions
 
