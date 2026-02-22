@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 10:24:26 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/12 16:09:41 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/22 19:46:30 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void		error_exit(t_wdata *w, t_mdata *m, t_assets *a, char *errmsg);
 int			close_button_handler(t_game *g);
 void		def_exit(t_wdata *w, t_mdata *m, t_assets *a, char *msg);
 int			valid_map(t_mdata *mdata);
-int			valid_path(t_mdata *mdata);
+int			valid_path(t_mdata *m);
 void		render_player(t_game *g, int x, int y);
 void		render_exit(t_game *g, int x, int y);
 void		render_collectible(t_game g, int x, int y);
@@ -37,5 +37,7 @@ void		move_left(t_game *g);
 void		move_right(t_game *g);
 int			count_file_lines(char *file_path);
 int			count_file_collectibles(char *file_path);
+int			valid_char_nb(t_mdata *m);
+
 
 #endif

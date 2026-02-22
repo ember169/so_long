@@ -6,7 +6,7 @@
 #    By: lgervet <42@leogervet.com>                 +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 0026/02/01 11:08:40 by gervet            #+#    #+#              #
-#    Updated: 2026/02/12 15:12:58 by lgervet          ###   ########.fr        #
+#    Updated: 2026/02/22 19:41:41 by lgervet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,10 +30,11 @@ SRCS	:= \
 		srcs/utils/free_all.c \
 		srcs/utils/error_handler.c \
 		srcs/utils/renderer.c \
+		srcs/utils/count_char.c \
 		srcs/parsing/file_counter.c \
 		srcs/parsing/file_parser.c \
 		srcs/parsing/file_validator.c \
-		srcs/parsing/path_finder.c \
+		srcs/parsing/flood_fill.c \
 		srcs/events/ks_handler.c \
 		srcs/events/move_character.c
 OBJS	:= $(SRCS:.c=.o)
