@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 11:17:03 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/13 13:10:10 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/22 17:49:12 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ t_mdata	*init_mdata(char *file_path)
 t_wdata	*init_wdata(t_mdata *m, int *mlx, char *title)
 {
 	t_wdata	*w;
+	int		screen_width;
+	int		screen_height;
 
 	if (!mlx)
 		error_exit(NULL, m, NULL, "[!] Error initalizing MLX\n");
@@ -97,8 +99,11 @@ t_wdata	*init_wdata(t_mdata *m, int *mlx, char *title)
 	if (!w)
 		error_exit(w, m, NULL, "[!] Error initalizing t_wdata\n");
 	ft_bzero(w, sizeof(t_wdata));
+	mlx_get_screen_size(mlx, &screen_width, &screen_height);
 	w->width = m->col_nb * TILE_SIZE;
 	w->height = m->row_nb * TILE_SIZE;
+	if (screen_width < w->width || screen_height < w->height)
+		error_exit(w, m, NULL, "[!] Map does not fit in screen\n");
 	w->w_title = title;
 	w->mlx_ptr = mlx;
 	w->w_ptr = mlx_new_window(w->mlx_ptr, w->width, \

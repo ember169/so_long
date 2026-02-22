@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 10:35:26 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/13 13:01:55 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/22 17:49:00 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	_valid_borders(t_mdata *mdata)
 **     @param param  Description.
 **     @return 1 OK / 0 KO.
 */
-static int	_valid_components_nb(t_mdata *m)
+static int	_valid_components(t_mdata *m)
 {
 	int		count[3];
 	int		x;
@@ -86,8 +86,6 @@ static t_collect	*_add_collectible(t_mdata *mdata, int x, int y, int i)
 	new_chest->uid = i;
 	new_chest->pos.x = x;
 	new_chest->pos.y = y;
-	ft_printf("[ ] Adding chest #%d to entities [%d] @ %d:%d\n", \
-		new_chest->uid, (i - 1), new_chest->pos.x, new_chest->pos.y);
 	return (new_chest);
 }
 
@@ -108,7 +106,7 @@ static t_mdata	*_duplicate_map(t_mdata *m)
 	i = 0;
 	while (m->map[y])
 	{
-		m->d_map[y] = ft_calloc((ft_strlen(m->map[y]) + 1),	sizeof(char));
+		m->d_map[y] = ft_calloc((ft_strlen(m->map[y]) + 1), sizeof(char));
 		if (!m->d_map[y])
 			error_exit(NULL, m, NULL, "[!] Error initializing d_map[y]");
 		x = 0;
@@ -130,13 +128,12 @@ static t_mdata	*_duplicate_map(t_mdata *m)
 int	valid_map(t_mdata *mdata)
 {
 	if (!(_valid_borders(mdata)))
-		return (0);
-	ft_printf("[x] Map borders checked\n");
-	if (!(_valid_components_nb(mdata)))
-		return (0);
-	ft_printf("[x] Components number checked\n");
+		return (ft_printf("[!] Walls not closed\n"), 0);
+	if (!(valid_char_nb(mdata)))
+		return (ft_printf("[!] Map not rectangle\n"), 0);
+	if (!(_valid_components(mdata)))
+		return (ft_printf("[!] Invalid components\n"), 0);
 	if (!valid_path(_duplicate_map(mdata)))
-		return (0);
-	ft_printf("[x] Path checked\n");
+		return (ft_printf("[!] Invalid path\n"), 0);
 	return (1);
 }
