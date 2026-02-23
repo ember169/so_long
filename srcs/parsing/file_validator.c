@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 10:35:26 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/22 19:46:39 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/23 14:49:11 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static t_collect	*_add_collectible(t_mdata *mdata, int x, int y, int i)
 
 	new_chest = ft_calloc(1, sizeof(t_collect));
 	if (!new_chest)
-		error_exit(NULL, mdata, NULL, "[!] Error adding collectible\n");
+		error_exit(NULL, mdata, NULL, "[!] Map Error: couldnt add collect.\n");
 	new_chest->uid = i;
 	new_chest->pos.x = x;
 	new_chest->pos.y = y;
@@ -108,14 +108,12 @@ static t_mdata	*_duplicate_map(t_mdata *m)
 	{
 		m->d_map[y] = ft_calloc((ft_strlen(m->map[y]) + 1), sizeof(char));
 		if (!m->d_map[y])
-			error_exit(NULL, m, NULL, "[!] Error initializing d_map[y]");
+			error_exit(NULL, m, NULL, "[!] Init Error: couldnt init d_map[y]");
 		x = 0;
 		while (m->map[y][x])
 		{
 			if (m->map[y][x] == 'C' && i++ <= m->c_nb)
 				m->c_array[i - 1] = _add_collectible(m, x, y, i);
-			if (m->map[y][x] == 'P')
-				m->d_map[y][x] = 'V';
 			else
 				m->d_map[y][x] = m->map[y][x];
 			x++;
@@ -125,15 +123,23 @@ static t_mdata	*_duplicate_map(t_mdata *m)
 	return (m);
 }
 
+/*
+** valid_map:
+**     Finds out if given map checks every prerequisites
+**
+**     @param *mdata  pointer to t_mdata structure
+**     @return 1 if valid / 0 if not
+*/
 int	valid_map(t_mdata *mdata)
 {
 	if (!(_valid_borders(mdata)))
-		return (ft_printf("[!] Walls not closed\n"), 0);
-	if (!(valid_char_nb(mdata)))
-		return (ft_printf("[!] Map not rectangle\n"), 0);
+		return (0);
+	if (!(valid_chars_legality(mdata)))
+		return (0);
 	if (!(_valid_components(mdata)))
-		return (ft_printf("[!] Invalid components\n"), 0);
-	if (!valid_path(_duplicate_map(mdata)))
-		return (ft_printf("[!] Invalid path\n"), 0);
+		return (0);
+	_duplicate_map(mdata);
+	if (!valid_path(mdata))
+		return (0);
 	return (1);
 }

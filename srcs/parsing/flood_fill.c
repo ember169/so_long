@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/22 18:27:56 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/22 19:50:18 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/23 14:46:59 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	_check_path_found(t_mdata *m)
 		j = 0;
 		while (m->map[i][j])
 		{
-			if ((m->map[i][j] == 'C' || m->map[i][j] == 'E') 
+			if ((m->map[i][j] == 'C' || m->map[i][j] == 'E')
 				&& m->d_map[i][j] != 'V')
 			{
 				ft_printf("Fail at [%d][%d]: expected C or E to be V\n", i, j);
@@ -96,14 +96,24 @@ void	_find_player_pos(t_mdata *m, int *y, int *x)
 	}
 }
 
+/*
+** valid_path:
+**     Uses player coordinates to flood-fill map and determines if map is 
+**	   winnable
+**
+**     @param *m  pointer to structure t_mdata
+**     @return 1 if valid / 0 if not
+*/
 int	valid_path(t_mdata *m)
 {
 	int	y;
 	int	x;
+	int	res;
 
 	x = 0;
 	y = 0;
 	_find_player_pos(m, &y, &x);
 	flood_fill(m, y, x);
-	return (_check_path_found(m));
+	res = _check_path_found(m);
+	return (res);
 }

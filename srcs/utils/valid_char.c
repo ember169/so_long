@@ -6,13 +6,20 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/22 18:53:16 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/22 19:35:45 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/23 14:34:02 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/so_long.h"
 
-int	valid_char_nb(t_mdata *m)
+/*
+** valid_chars_legality:
+**     Iterate through the map to find illegal characters
+**
+**     @param *m  pointer to structure t_mdata
+**     @return 1 everything is fine / 0 illegal character detected
+*/
+int	valid_chars_legality(t_mdata *m)
 {
 	int	y;
 	int	x;
@@ -32,23 +39,4 @@ int	valid_char_nb(t_mdata *m)
 		y++;
 	}
 	return (1);
-}
-
-void	_print_map(t_mdata *m)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (m->d_map[y])
-	{
-		x = 0;
-		while (m->d_map[y][x])
-		{
-			ft_printf("%c", m->d_map[y][x]);
-			x++;
-		}
-		ft_printf("\n");
-		y++;
-	}
 }

@@ -6,7 +6,7 @@
 #    By: lgervet <42@leogervet.com>                 +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 0026/02/01 11:08:40 by gervet            #+#    #+#              #
-#    Updated: 2026/02/22 19:41:41 by lgervet          ###   ########.fr        #
+#    Updated: 2026/02/23 14:48:39 by lgervet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRCS	:= \
 		srcs/utils/free_all.c \
 		srcs/utils/error_handler.c \
 		srcs/utils/renderer.c \
-		srcs/utils/count_char.c \
+		srcs/utils/valid_char.c \
 		srcs/parsing/file_counter.c \
 		srcs/parsing/file_parser.c \
 		srcs/parsing/file_validator.c \
