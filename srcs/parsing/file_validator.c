@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 10:35:26 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/23 14:49:11 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/03/04 13:27:31 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,10 +112,9 @@ static t_mdata	*_duplicate_map(t_mdata *m)
 		x = 0;
 		while (m->map[y][x])
 		{
+			m->d_map[y][x] = m->map[y][x];
 			if (m->map[y][x] == 'C' && i++ <= m->c_nb)
 				m->c_array[i - 1] = _add_collectible(m, x, y, i);
-			else
-				m->d_map[y][x] = m->map[y][x];
 			x++;
 		}
 		y++;

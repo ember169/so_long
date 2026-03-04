@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 11:17:03 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/23 14:24:59 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/03/04 17:38:53 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,14 +102,14 @@ t_wdata	*init_wdata(t_mdata *m, int *mlx, char *title)
 	mlx_get_screen_size(mlx, &screen_width, &screen_height);
 	w->width = m->col_nb * TILE_SIZE;
 	w->height = m->row_nb * TILE_SIZE;
-	if (screen_width < w->width || screen_height < w->height)
-		error_exit(w, m, NULL, "[!] Init Error : map doesnt fit screen\n");
 	w->w_title = title;
 	w->mlx_ptr = mlx;
 	w->w_ptr = mlx_new_window(w->mlx_ptr, w->width, \
 		w->height, w->w_title);
 	if (!w->w_ptr)
 		error_exit(w, m, NULL, "[!] Init Error: couldnt init w->w_ptr\n");
+	if (screen_width < w->width || screen_height < w->height)
+		error_exit(w, m, NULL, "[!] Init Error: map doesnt fit screen\n");
 	return (w);
 }
 

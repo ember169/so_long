@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 10:24:26 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/23 14:34:05 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/03/04 17:24:11 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void		move_right(t_game *g);
 int			count_file_lines(char *file_path);
 int			count_file_collectibles(char *file_path);
 int			valid_chars_legality(t_mdata *m);
-void 		free_d_map(t_mdata *mdata);
-
+void		free_d_map(t_mdata *mdata);
 
 #endif

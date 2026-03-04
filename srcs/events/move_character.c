@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 21:13:07 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/23 14:41:48 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/24 11:17:44 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void	check_pos(t_game *g, int next_x, int next_y)
 
 void	move_up(t_game *g)
 {
-	if (g->player_pos.y > 0 && g->m->map[g->player_pos.y - 1][g->player_pos.x]\
-		 != '1')
+	if (g->player_pos.y > 0 && g->m->map[g->player_pos.y - 1][g->player_pos.x] \
+		!= '1')
 	{
 		check_pos(g, g->player_pos.x, g->player_pos.y - 1);
 		render_player(g, g->player_pos.x, g->player_pos.y - 1);

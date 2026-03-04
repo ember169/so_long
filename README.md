@@ -1,9 +1,8 @@
-__This project has been created as part of the 42 curriculum by lgervet__
+*This project has been created as part of the 42 curriculum by lgervet*
 # so_long - A small 2D game
 This project is a small 2D game. Its purpose is to work with textures, sprites, and other basic gameplay elements.<br>
 [Subject (pdf)](cdn.intra.42.fr/pdf/pdf/185033/en.subject.pdf)<br>
 ![Project illustration](https://github.com/user-attachments/assets/9a7ce6c7-c302-4d91-8d27-4477a0cdd431)
-
 
 ## Description
 2D top-down game developed as part of the 42 Common Core curriculum. The goal is to create a basic engine using the MiniLibX library, focusing on window management, event handling (keyboard and mouse), and sprite rendering. <br>
@@ -47,11 +46,8 @@ To use one of the premade maps:<br>
 ## AI Usage (Gemini 3 Flash)
 Technical advisor for build system debugging, memory optimization, and algorithmic hardening.
 
-### Build & Graphics
-- **Linker Fix:** Resolved "multiple definition" errors by diagnosing stale object files in `libft.a`.
-- **Makefile:** Fixed recursive build failures caused by path variable typos (`LIB_PATH` vs `LIBPATH`).
+### Graphics
 - **Coordinate Mapping:** Corrected Row/Column inversion.
-- **Rendering:** Fixed diagonal-line artifacts by refactoring the `mlx_pixel_put` loop logic.
 
 ### Logic & Validation
 - **Geometry:** Removed incorrect `row_nb == col_nb` restriction (rectangles include squares).

@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 10:27:17 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/12 14:21:43 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/03/04 17:25:17 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ typedef struct s_collectible
 	t_pos	pos;
 	int		collected;
 }	t_collect;
-
 
 typedef struct s_map_data
 {

@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 15:02:20 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/12 16:09:43 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/24 11:17:15 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	_get_chest_index(t_game *g, int x, int y)
 int	_has_been_collected(t_game *g, int index)
 {
 	if (g->m->c_array[index]->collected == 1)
-			return (1);
+		return (1);
 	return (0);
 }
 

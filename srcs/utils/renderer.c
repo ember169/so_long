@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 15:33:00 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/23 14:27:01 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/02/24 11:18:32 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ void	render_floor_walls(t_wdata *w, t_mdata *m, t_assets *a)
 		while (m->map[y][x])
 		{
 			if (m->map[y][x] != '1')
-				mlx_put_image_to_window(w->mlx_ptr, w->w_ptr, a->floor.ptr,\
+				mlx_put_image_to_window(w->mlx_ptr, w->w_ptr, a->floor.ptr, \
 				x * TILE_SIZE, y * TILE_SIZE);
 			else
-				mlx_put_image_to_window(w->mlx_ptr, w->w_ptr, a->wall.ptr,\
+				mlx_put_image_to_window(w->mlx_ptr, w->w_ptr, a->wall.ptr, \
 				x * TILE_SIZE, y * TILE_SIZE);
 			x++;
 		}

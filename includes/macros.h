@@ -6,12 +6,12 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/11 10:35:52 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/12 13:20:06 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/03/04 17:24:45 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MACRO_H
-# define MACRO_H
+#ifndef MACROS_H
+# define MACROS_H
 
 # define TILE_SIZE 	64
 

@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 11:17:03 by lgervet           #+#    #+#             */
-/*   Updated: 2026/02/23 14:47:15 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/03/04 17:40:15 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	_free_map(t_mdata *mdata)
 	}
 }
 
-void free_d_map(t_mdata *mdata)
+void	free_d_map(t_mdata *mdata)
 {
 	int	i;
 
@@ -48,6 +48,8 @@ void free_d_map(t_mdata *mdata)
 
 static void	_free_window(t_wdata *wdata)
 {
+	if (wdata->w_ptr)
+		mlx_destroy_window(wdata->mlx_ptr, wdata->w_ptr);
 	if (wdata->w_ptr)
 		mlx_destroy_display(wdata->mlx_ptr);
 	free(wdata->mlx_ptr);
