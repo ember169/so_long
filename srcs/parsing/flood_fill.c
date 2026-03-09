@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/22 18:27:56 by lgervet           #+#    #+#             */
-/*   Updated: 2026/03/04 13:25:09 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/03/09 14:19:20 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	_check_path_found(t_mdata *m)
 			if ((m->map[i][j] == 'C' || m->map[i][j] == 'E')
 				&& m->d_map[i][j] != 'V')
 			{
-				ft_printf("Fail at [%d][%d]: expected C or E to be V\n", i, j);
+				ft_printf("Unreachable element at [%d][%d]\n", i, j);
 				return (0);
 			}
 			j++;
