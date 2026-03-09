@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 10:35:26 by lgervet           #+#    #+#             */
-/*   Updated: 2026/03/04 13:27:31 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/03/09 14:09:58 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@
 static int	_valid_borders(t_mdata *mdata)
 {
 	int	i;
+	int	len;
 
+	if (mdata->row_nb < 3 || mdata->col_nb < 3)
+		return (0);
 	i = 0;
 	while (i < mdata->col_nb)
 	{
@@ -30,10 +33,13 @@ static int	_valid_borders(t_mdata *mdata)
 			return (0);
 		i++;
 	}
-	i = 1;
-	while (i < mdata->row_nb - 1)
+	i = 0;
+	while (i < mdata->row_nb)
 	{
-		if (mdata->map[i][0] != '1' || mdata->map[i][mdata->col_nb - 1] != '1')
+		len = ft_strlen(mdata->map[i]);
+		if (len == 0 || len != mdata->col_nb)
+			return (0);
+		if (mdata->map[i][0] != '1' || mdata->map[i][len - 1] != '1')
 			return (0);
 		i++;
 	}

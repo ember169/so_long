@@ -6,7 +6,7 @@
 /*   By: lgervet <42@leogervet.com>                 +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 11:17:03 by lgervet           #+#    #+#             */
-/*   Updated: 2026/03/04 17:40:15 by lgervet          ###   ########.fr       */
+/*   Updated: 2026/03/09 13:54:06 by lgervet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,19 @@ void	free_d_map(t_mdata *mdata)
 
 static void	_free_window(t_wdata *wdata)
 {
+	if (!wdata)
+		return ;
 	if (wdata->w_ptr)
+	{
 		mlx_destroy_window(wdata->mlx_ptr, wdata->w_ptr);
-	if (wdata->w_ptr)
+		wdata->w_ptr = NULL;
+	}
+	if (wdata->mlx_ptr)
+	{
 		mlx_destroy_display(wdata->mlx_ptr);
-	free(wdata->mlx_ptr);
+		free(wdata->mlx_ptr);
+		wdata->mlx_ptr = NULL;
+	}
 	free(wdata);
 }
 
@@ -68,8 +76,6 @@ static void	_free_assets(t_wdata *window, t_assets *assets)
 		mlx_destroy_image(window->mlx_ptr, assets->wall.ptr);
 	if (assets->player.ptr)
 		mlx_destroy_image(window->mlx_ptr, assets->player.ptr);
-	if (window->w_ptr)
-		mlx_destroy_window(window->mlx_ptr, window->w_ptr);
 	free(assets);
 }
 
